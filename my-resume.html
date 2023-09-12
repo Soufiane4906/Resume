@@ -386,56 +386,7 @@ blockquote,
     </style>
   </head>
   <body>
-    <h1>Translate this page</h1>
-    <p>This is some example text that you want to translate.</p>
     
-    <select id="languageSelector">
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <!-- Add more language options here -->
-    </select>
-
-    <button id="translateButton">Translate</button>
-
-    <div id="translatedContent">
-        <!-- Translated content will be displayed here -->
-    </div>
-
-    <script>
-        // Your Google Translate API Key
-        const apiKey = 'YOUR_API_KEY_HERE';
-
-        document.getElementById('translateButton').addEventListener('click', () => {
-            const textToTranslate = document.querySelector('p').textContent;
-            const targetLanguage = document.getElementById('languageSelector').value;
-
-            // Construct the translation API URL
-            const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-            const data = {
-                q: textToTranslate,
-                target: targetLanguage,
-            };
-
-            // Send a POST request to the Google Translate API
-            fetch(apiUrl, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(result => {
-                const translatedText = result.data.translations[0].translatedText;
-                document.getElementById('translatedContent').textContent = translatedText;
-            })
-            .catch(error => {
-                console.error('Translation error:', error);
-            });
-        });
-    </script>
-
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
